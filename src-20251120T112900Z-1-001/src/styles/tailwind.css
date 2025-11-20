@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --color-background: #F8FAFC; /* slate-50 */
+    --color-foreground: #0F172A; /* slate-900 */
+    --color-border: #E2E8F0; /* slate-200 */
+    --color-input: #FFFFFF; /* white */
+    --color-ring: #0891B2; /* cyan-600 */
+    
+    /* Card Colors */
+    --color-card: #FFFFFF; /* white */
+    --color-card-foreground: #0F172A; /* slate-900 */
+    
+    /* Popover Colors */
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #0F172A; /* slate-900 */
+    
+    /* Muted Colors */
+    --color-muted: #F1F5F9; /* slate-100 */
+    --color-muted-foreground: #64748B; /* slate-500 */
+    
+    /* Primary Colors */
+    --color-primary: #0891B2; /* cyan-600 */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors */
+    --color-secondary: #0F766E; /* teal-700 */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #F59E0B; /* amber-500 */
+    --color-accent-foreground: #FFFFFF; /* white */
+    
+    /* Success Colors */
+    --color-success: #10B981; /* emerald-500 */
+    --color-success-foreground: #FFFFFF; /* white */
+    
+    /* Warning Colors */
+    --color-warning: #F59E0B; /* amber-500 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    
+    /* Error/Destructive Colors */
+    --color-error: #EF4444; /* red-500 */
+    --color-error-foreground: #FFFFFF; /* white */
+    --color-destructive: #EF4444; /* red-500 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* Glassmorphism Variables */
+    --glass-backdrop: blur(20px);
+    --glass-opacity: 0.1;
+    --glass-border: rgba(255, 255, 255, 0.2);
+    
+    /* Animation Variables */
+    --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Effects */
+  .glass-effect {
+    backdrop-filter: var(--glass-backdrop);
+    background: rgba(255, 255, 255, var(--glass-opacity));
+    border: 1px solid var(--glass-border);
+  }
+  
+  /* Emergency Alert Pulse Animation */
+  .alert-pulse {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+    50% {
+      opacity: 0.8;
+      box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    }
+  }
+  
+  /* Micro-interaction Spring Animation */
+  .spring-bounce {
+    transition: transform 150ms var(--spring-bounce);
+  }
+  
+  .spring-bounce:hover {
+    transform: scale(1.02);
+  }
+  
+  .spring-bounce:active {
+    transform: scale(0.98);
+  }
+  
+  /* Layered Shadow System */
+  .shadow-layered {
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.1),
+      0 4px 12px rgba(0, 0, 0, 0.05),
+      0 8px 24px rgba(0, 0, 0, 0.03);
+  }
+  
+  /* Floating Action Button */
+  .floating-action {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 200ms var(--ease-out);
+  }
+  
+  .floating-action:hover {
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  /* Progressive Data Revelation */
+  .expand-card {a
+    transition: height 300ms var(--ease-out);
+    overflow: hidden;
+  }
+  
+  /* Contextual Color Morphing */
+  .color-morph {
+    transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out;
+  }
+  
+  /* Weather Severity Indicators */
+  .severity-low {
+    @apply border-l-4 border-l-success bg-emerald-50;
+  }
+  
+  .severity-moderate {
+    @apply border-l-4 border-l-warning bg-amber-50;
+  }
+  
+  .severity-high {
+    @apply border-l-4 border-l-error bg-red-50;
+  }
+  
+  /* Navigation Sticky Positioning */
+  .nav-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Alert Banner Positioning */
+  .alert-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+  }
+  
+  /* Mobile Bottom Navigation */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+}
+
+@layer utilities {
+  /* Ambient Background Patterns */
+  .weather-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(8, 145, 178, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(15, 118, 110, 0.03) 0%, transparent 50%);
+  }
+  
+  /* Grid Responsive Patterns */
+  .weather-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  /* Emergency Accessibility */
+  .high-contrast {
+    filter: contrast(1.2);
+  }
+  
+  /* Connection Status Indicators */
+  .status-connected {
+    @apply bg-success text-success-foreground;
+  }
+  
+  .status-disconnected {
+    @apply bg-error text-error-foreground;
+  }
+  
+  .status-reconnecting {
+    @apply bg-warning text-warning-foreground;
+  }
+}
